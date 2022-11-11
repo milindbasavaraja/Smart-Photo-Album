@@ -1,2 +1,2 @@
-# Smart-Photo-Album
- Smart-Photo-Album using AWS
+# Smart-Photo-Booth
+ Smart Photo Search and upload using AWS
