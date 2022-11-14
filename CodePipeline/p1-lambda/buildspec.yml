@@ -31,9 +31,3 @@ phases:
       - aws lambda update-function-code --function-name test-function --zip-file fileb://deployment_package.zip
       #- aws lambda update-function-code --function-name search-photos --zip-file fileb://deployment_package1.zip
       - echo "Done!"
-
-artifacts:
-  type: zip
-  files:
-    - template.yaml
-    - output-template.yaml
