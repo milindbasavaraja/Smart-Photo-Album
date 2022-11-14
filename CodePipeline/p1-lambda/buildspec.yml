@@ -13,29 +13,29 @@ phases:
       - sam package --s3-bucket $BUCKET_NAME --output-template-file output-template.yaml
 
       #- aws cloudformation package --template-file template.yaml --s3-bucket $BUCKET_NAME --output-template-file output-template.yaml
-  build:
-    commands:
-      - echo "Zipping deployment package..."
-      - cd lib
-      - zip -r9 ../deployment_package.zip .
-      # - zip -r9 ../deployment_package1.zip .
-      - cd ..
-      - ls -lrt
-      - cd indexLambdaFunction
-      - zip -g ../deployment_package.zip lambda_function.py
-      # - cd ../lf2a2
-      # - zip -g ../deployment_package1.zip lambda_function.py
-      - cd ..
-      - ls -lrt
-  post_build:
-    commands:
-      - echo "Updating lambda Function..."
-      - ls -lrt
-      - aws lambda update-function-code --function-name test-function --zip-file fileb://deployment_package.zip
-      #- aws lambda update-function-code --function-name search-photos --zip-file fileb://deployment_package1.zip
-      - echo "Done!"
-      - echo $CODEBUILD_SRC_DIR
-      - ls -lrt $CODEBUILD_SRC_DIR
+  # build:
+  #  commands:
+  #   - echo "Zipping deployment package..."
+  #   - cd lib
+  #   - zip -r9 ../deployment_package.zip .
+  # - zip -r9 ../deployment_package1.zip .
+  #   - cd ..
+  #   - ls -lrt
+  #   - cd indexLambdaFunction
+  #   - zip -g ../deployment_package.zip lambda_function.py
+  # - cd ../lf2a2
+  # - zip -g ../deployment_package1.zip lambda_function.py
+  #   - cd ..
+  #   - ls -lrt
+  #post_build:
+  #  commands:
+  #    - echo "Updating lambda Function..."
+  #   - ls -lrt
+  #  - aws lambda update-function-code --function-name test-function --zip-file fileb://deployment_package.zip
+  #   #- aws lambda update-function-code --function-name search-photos --zip-file fileb://deployment_package1.zip
+  #   - echo "Done!"
+  #   - echo $CODEBUILD_SRC_DIR
+  #   - ls -lrt $CODEBUILD_SRC_DIR
 
 artifacts:
   type: zip
