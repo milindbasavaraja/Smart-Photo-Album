@@ -16,7 +16,7 @@ phases:
       # - zip -r9 ../deployment_package1.zip .
       - cd ..
       - ls -lrt
-      - cd ../indexLambdaFunction
+      - cd indexLambdaFunction
       - zip -g ../deployment_package.zip lambda_function.py
       # - cd ../lf2a2
       # - zip -g ../deployment_package1.zip lambda_function.py
