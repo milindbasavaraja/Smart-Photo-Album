@@ -1,5 +1,5 @@
 const apigClient = apigClientFactory.newClient({
-  apiKey: "NmXVxcYd0F5NZy41O41tk1AadpLIHTa64GXdirQz",
+  apiKey: "PZIEXJmVaJ4331Oenfzzg8M6S6nq0zkB1wLHscGt",
 });
 let audioCtx;
 
@@ -21,7 +21,7 @@ function searchphotos(searchText) {
 
   var queryParams = {
     q: searchText,
-    "x-api-key": "NmXVxcYd0F5NZy41O41tk1AadpLIHTa64GXdirQz",
+    "x-api-key": "PZIEXJmVaJ4331Oenfzzg8M6S6nq0zkB1wLHscGt",
   };
   console.log("The apig client is %o", apigClient);
   apigClient
@@ -82,7 +82,7 @@ function uploadPhoto() {
       "Content-Type": file.type,
       metadataMap: { "x-amz-meta-customLabels": "" },
       "x-amz-meta-customLabels": "",
-      "x-api-key": "NmXVxcYd0F5NZy41O41tk1AadpLIHTa64GXdirQz",
+      "x-api-key": "PZIEXJmVaJ4331Oenfzzg8M6S6nq0zkB1wLHscGt",
     };
   } else {
     params = {
@@ -92,7 +92,7 @@ function uploadPhoto() {
       "Content-Type": file.type,
       metadataMap: { "x-amz-meta-customLabels": customLabel },
       "x-amz-meta-customLabels": customLabel,
-      "x-api-key": "NmXVxcYd0F5NZy41O41tk1AadpLIHTa64GXdirQz",
+      "x-api-key": "PZIEXJmVaJ4331Oenfzzg8M6S6nq0zkB1wLHscGt",
     };
   }
   console.log("Adding headers");
@@ -110,7 +110,7 @@ function uploadPhoto() {
   console.log("The additional params is:", additionalParams);
 
   url =
-    "https://h9eqw1xe31.execute-api.us-east-1.amazonaws.com/dev/upload/my-photos-bucket/" +
+    "https://wbtozw3u7f.execute-api.us-east-1.amazonaws.com/dev/upload/my-photos-bucket-smart-photos/" +
     file.name;
   axios.put(url, file, additionalParams).then((response) => {
     console.log(" New " + response.data);
@@ -187,7 +187,7 @@ function voiceSearch() {
       },
     };
     url =
-      "https://h9eqw1xe31.execute-api.us-east-1.amazonaws.com/dev/upload-audio/audio-files-bucket-photo-booth/" +
+      "https://wbtozw3u7f.execute-api.us-east-1.amazonaws.com/dev/upload-audio/audio-files-bucket-photo-booth/" +
       "audio1.webm";
     axios.put(url, blob, additionalParams).then((response) => {
       console.log(" New " + response.data);

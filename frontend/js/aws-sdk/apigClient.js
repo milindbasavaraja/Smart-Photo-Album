@@ -53,7 +53,7 @@ apigClientFactory.newClient = function (config) {
 
     
     // extract endpoint and path from url
-    var invokeUrl = 'https://h9eqw1xe31.execute-api.us-east-1.amazonaws.com/dev';
+    var invokeUrl = 'https://wbtozw3u7f.execute-api.us-east-1.amazonaws.com/dev';
     var endpoint = /(^https?:\/\/[^\/]+)/g.exec(invokeUrl)[1];
     var pathComponent = invokeUrl.substring(endpoint.length);
 
@@ -140,11 +140,11 @@ apigClientFactory.newClient = function (config) {
     apigClient.uploadAudioBucketFilenameOptions = function (params, body, additionalParams) {
         if(additionalParams === undefined) { additionalParams = {}; }
         
-        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
+        apiGateway.core.utils.assertParametersDefined(params, ['filename', 'bucket'], ['body']);
         
         var uploadAudioBucketFilenameOptionsRequest = {
             verb: 'options'.toUpperCase(),
-            path: pathComponent + uritemplate('/upload-audio/{bucket}/{filename}').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            path: pathComponent + uritemplate('/upload-audio/{bucket}/{filename}').expand(apiGateway.core.utils.parseParametersToObject(params, ['filename', 'bucket'])),
             headers: apiGateway.core.utils.parseParametersToObject(params, []),
             queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
             body: body
@@ -176,11 +176,11 @@ apigClientFactory.newClient = function (config) {
     apigClient.uploadBucketFilenameOptions = function (params, body, additionalParams) {
         if(additionalParams === undefined) { additionalParams = {}; }
         
-        apiGateway.core.utils.assertParametersDefined(params, [], ['body']);
+        apiGateway.core.utils.assertParametersDefined(params, ['filename', 'bucket'], ['body']);
         
         var uploadBucketFilenameOptionsRequest = {
             verb: 'options'.toUpperCase(),
-            path: pathComponent + uritemplate('/upload/{bucket}/{filename}').expand(apiGateway.core.utils.parseParametersToObject(params, [])),
+            path: pathComponent + uritemplate('/upload/{bucket}/{filename}').expand(apiGateway.core.utils.parseParametersToObject(params, ['filename', 'bucket'])),
             headers: apiGateway.core.utils.parseParametersToObject(params, []),
             queryParams: apiGateway.core.utils.parseParametersToObject(params, []),
             body: body
