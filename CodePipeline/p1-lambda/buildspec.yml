@@ -33,7 +33,6 @@ phases:
       - echo "Done!"
 
 artifacts:
-  type: zip
   files:
     - "*/template.yaml"
     - "*/output-template.yaml"
