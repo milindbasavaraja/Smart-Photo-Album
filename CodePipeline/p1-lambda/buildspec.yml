@@ -34,5 +34,5 @@ phases:
 
 artifacts:
   files:
-    - "*/template.yaml"
-    - "*/output-template.yaml"
+    - "template.yaml"
+    - "output-template.yaml"
