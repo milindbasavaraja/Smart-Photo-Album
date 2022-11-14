@@ -23,6 +23,7 @@ phases:
       # - cd ../lf2a2
       # - zip -g ../deployment_package1.zip lambda_function.py
       - cd ..
+      - ls -lrt
   post_build:
     commands:
       - echo "Updating lambda Function..."
