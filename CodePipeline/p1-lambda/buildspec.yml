@@ -10,7 +10,7 @@ phases:
       - sam build
       - pip install -r requirements.txt -t lib
       - export BUCKET_NAME=test-pipeline-output-bucket-milind
-      - sam package --s3-bucket $BUCKET --output-template-file output-template.yaml
+      - sam package --s3-bucket $BUCKET_NAME --output-template-file output-template.yaml
 
       #- aws cloudformation package --template-file template.yaml --s3-bucket $BUCKET_NAME --output-template-file output-template.yaml
   build:
