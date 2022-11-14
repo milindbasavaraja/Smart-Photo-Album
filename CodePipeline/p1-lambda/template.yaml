@@ -12,7 +12,6 @@ Resources:
       Handler: lambda_function.handler
       Runtime: python3.8
       CodeUri: ./indexLambdaFunction
-      Description: !Ref LambdaDescription
 #Resources:
 # SampleFunction:
 #  Type: AWS::Serverless::Function
