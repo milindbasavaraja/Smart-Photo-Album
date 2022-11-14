@@ -36,5 +36,5 @@ phases:
 
 artifacts:
   files:
-    - "template.yaml"
-    - "output-template.yaml"
+    - "CodePipeline/p1-lambda/template.yaml"
+    - "CodePipeline/p1-lambda/output-template.yaml"
