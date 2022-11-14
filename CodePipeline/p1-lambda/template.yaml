@@ -23,7 +23,7 @@ Resources:
       Timeout: 60
       Handler: lambda_function.handler
       Runtime: python3.10
-      CodeUri: ./p1-lambda/indexLambdaFunction
+      CodeUri: ./indexLambdaFunction
       Description: !Ref LambdaDescription
 #Resources:
 # SampleFunction:
