@@ -38,3 +38,4 @@ artifacts:
   files:
     - "CodePipeline/p1-lambda/template.yaml"
     - "CodePipeline/p1-lambda/output-template.yaml"
+  name: BuildArtifact
