@@ -35,6 +35,7 @@ phases:
       - ls -lrt $CODEBUILD_SRC_DIR
 
 artifacts:
+  type: zip
   files:
     - "CodePipeline/p1-lambda/template.yaml"
     - "CodePipeline/p1-lambda/output-template.yaml"
