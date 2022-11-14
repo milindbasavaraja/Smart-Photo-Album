@@ -2,23 +2,11 @@ AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
 Description: Python file including external library
 
-Parameters:
-LambdaName:
-  Description: "Name for this function"
-  Type: "String"
-LambdaDescription:
-  Description: "Description for this function"
-  Type: "String"
-LambdaRole:
-  Description: "Role for this function"
-  Type: "String"
-
 Resources:
   SampleFunction:
     Type: "AWS::Serverless::Function"
     Properties:
-      Role: !Ref LambdaRole
-      FunctionName: !Ref LambdaName
+      FunctionName: test-function
       MemorySize: 512
       Timeout: 60
       Handler: lambda_function.handler
