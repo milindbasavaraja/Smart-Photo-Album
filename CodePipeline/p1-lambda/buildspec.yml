@@ -8,6 +8,8 @@ phases:
       - ls -lrt
       - cd CodePipeline/p1-lambda
       - pip install -r requirements.txt -t lib
+      - export BUCKET_NAME=test-pipeline-output-bucket-milind
+      - aws cloudformation package --template-file template.yaml --s3-bucket $BUCKET_NAME --output-template-file output-template.yaml
   build:
     commands:
       - echo "Zipping deployment package..."
@@ -28,3 +30,9 @@ phases:
       - aws lambda update-function-code --function-name test-function --zip-file fileb://deployment_package.zip
       #- aws lambda update-function-code --function-name search-photos --zip-file fileb://deployment_package1.zip
       - echo "Done!"
+
+artifacts:
+  type: zip
+  files:
+    - template.yml
+    - outputtemplate.yml

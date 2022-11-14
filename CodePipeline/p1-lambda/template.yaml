@@ -1,11 +1,35 @@
 AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
 Description: Python file including external library
+
+Parameters:
+LambdaName:
+  Description: "Name for this function"
+  Type: "String"
+LambdaDescription:
+  Description: "Description for this function"
+  Type: "String"
+LambdaRole:
+  Description: "Role for this function"
+  Type: "String"
+
 Resources:
   SampleFunction:
-    Type: AWS::Serverless::Function
+    Type: "AWS::Serverless::Function"
     Properties:
-      Handler: index.lambda_handler
-      Runtime: python3.7
-      FunctionName: SamplePython
-      CodeUri: ./src #Directory the source file is
+      Role: !Ref LambdaRole
+      FunctionName: !Ref LambdaName
+      MemorySize: 512
+      Timeout: 60
+      Handler: lambda_function.handler
+      Runtime: python3.10
+      CodeUri: ./CodePipeline/p1-lambda/indexLambdaFunction
+      Description: !Ref LambdaDescription
+#Resources:
+# SampleFunction:
+#  Type: AWS::Serverless::Function
+#  Properties:
+#    Handler: index.lambda_handler
+#    Runtime: python3.7
+#    FunctionName: SamplePython
+#    CodeUri: ./src #Directory the source file is
