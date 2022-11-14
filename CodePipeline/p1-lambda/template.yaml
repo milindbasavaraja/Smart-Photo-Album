@@ -22,7 +22,7 @@ Resources:
       MemorySize: 512
       Timeout: 60
       Handler: lambda_function.handler
-      Runtime: python3.10
+      Runtime: python3.7
       CodeUri: ./indexLambdaFunction
       Description: !Ref LambdaDescription
 #Resources:
