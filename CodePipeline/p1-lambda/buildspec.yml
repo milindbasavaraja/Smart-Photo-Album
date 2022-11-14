@@ -5,11 +5,14 @@ phases:
       python: 3.10
     commands:
       - echo "Installing dependencies..."
+      - sam build
       - ls -lrt
       - cd CodePipeline/p1-lambda
       - pip install -r requirements.txt -t lib
       - export BUCKET_NAME=test-pipeline-output-bucket-milind
-      - aws cloudformation package --template-file template.yaml --s3-bucket $BUCKET_NAME --output-template-file output-template.yaml
+      - sam package --s3-bucket $BUCKET --output-template-file output-template.yaml
+
+      #- aws cloudformation package --template-file template.yaml --s3-bucket $BUCKET_NAME --output-template-file output-template.yaml
   build:
     commands:
       - echo "Zipping deployment package..."
