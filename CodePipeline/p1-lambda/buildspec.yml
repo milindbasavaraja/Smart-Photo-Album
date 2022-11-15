@@ -11,7 +11,7 @@ phases:
       - pip install -r requirements.txt -t lib
       - export BUCKET_NAME=test-pipeline-output-bucket-milind
       - sam package --s3-bucket $BUCKET_NAME --output-template-file output-template.yaml
-      - sam deploy --template-file /codebuild/output/src631382078/src/CodePipeline/p1-lambda/output-template.yaml --stack-name my-python-stack
+      - sam deploy --template-file output-template.yaml --stack-name my-python-stack
 
       #- aws cloudformation package --template-file template.yaml --s3-bucket $BUCKET_NAME --output-template-file output-template.yaml
   # build:
