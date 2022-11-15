@@ -20,7 +20,7 @@ Resources:
     Type: "AWS::Serverless::Function"
     Properties:
       Role: arn:aws:iam::438830062189:role/service-role/search-photos-role-70qey4ah
-      FunctionName: search-photos-1
+      FunctionName: search-photos
       MemorySize: 512
       Timeout: 60
       Handler: lambda_function.lambda_handler
