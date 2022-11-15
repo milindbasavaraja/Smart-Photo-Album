@@ -9,7 +9,7 @@ logging.basicConfig(format = '%(asctime)s : %(levelname)s %(message)s')
 
 
 def post_query_to_lex(query):
-
+    log.info("Test ")
     lex = boto3.client('lex-runtime')
     lex_response = lex.post_text(
         botName = 'PhotosBot',
