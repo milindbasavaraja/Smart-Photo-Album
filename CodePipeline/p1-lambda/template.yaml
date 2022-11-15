@@ -6,7 +6,7 @@ Resources:
   SampleFunction:
     Type: "AWS::Serverless::Function"
     Properties:
-      FunctionName: test-function
+      FunctionName: index-photos-1
       MemorySize: 512
       Timeout: 60
       Handler: lambda_function.handler
