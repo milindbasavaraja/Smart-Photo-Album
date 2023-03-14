@@ -19,38 +19,38 @@ This project has eight components:
   >* This prevents unauthorized internet access to your service.
 2. Upload & index photos
 
- a. Create a S3 bucket ( B2 ) to store the photos.
+ >a. Create a S3 bucket ( B2 ) to store the photos.
+>
+ >b. Create a Lambda function ( LF1 ) called “index-photos” .
+>
+    >*Launch the Lambda function inside the same VPC as ElasticSearch. This ensures that the function can reach the ElasticSearch instance.
+>
+  >* Make sure the Lambda has the same Security Group ( SG1 ) as ElasticSearch.
 
- b. Create a Lambda function ( LF1 ) called “index-photos” .
-
-   i. Launch the Lambda function inside the same VPC as ElasticSearch. This ensures that the function can reach the ElasticSearch instance.
-
-  ii. Make sure the Lambda has the same Security Group ( SG1 ) as ElasticSearch.
-
-c. Set up a PUT event trigger on the photos S3 bucket ( B2 ), such that whenever a photo gets uploaded to the bucket, it triggers the Lambda function ( LF1 ) to index it.
-
-    i. To test this functionality, upload a file to the photos S3 bucket ( B2 ) and check the logs of the indexing Lambda function ( LF1 ) to see if it got invoked. If it did, your setup is complete.
-  -If the Lambda ( LF1 ) did not get invoked, check to see if you set up the correct permissions5 for S3 to invoke your Lambda function.
-
-d. Implement the indexing Lambda function ( LF1 ):
-  i. Given a S3 PUT event ( E1 ) detect labels in the image, using Rekognition (“detectLabels” method).
-
-  ii. Use the S3 SDK’s headObject method7 to retrieve the S3 metadata created at the object’s upload time. Retrieve the x-amz-meta-customLabels metadata field, if applicable, and create a JSON array ( A1 ) with the labels.
-
-  iii. Store a JSON object in an ElasticSearch index (“photos”) that references the S3 object from the PUT event ( E1 ) and append string labels to the labels array ( A1 ), one for each label detected by Rekognition.
-
-  Use the following schema for the JSON object:
-  {
-        “objectKey”: “my-photo.jpg”,
-        “bucket”: “my-photo-bucket”,
-        “createdTimestamp”: “2018-11-05T12:40:02”,
-        “labels”: [
-                    “person”,
-                    “dog”,
-                    “ball”,
-                    “park”
-                ]
-  }
+>c. Set up a PUT event trigger on the photos S3 bucket ( B2 ), such that whenever a photo gets uploaded to the bucket, it triggers the >Lambda function ( LF1 ) to index it.
+>
+    >*To test this functionality, upload a file to the photos S3 bucket ( B2 ) and check the logs of the indexing Lambda function ( LF1 ) >to see if it got invoked. If it did, your setup is complete.
+  >-If the Lambda ( LF1 ) did not get invoked, check to see if you set up the correct permissions5 for S3 to invoke your Lambda function.
+>
+>d. Implement the indexing Lambda function ( LF1 ):
+  >*Given a S3 PUT event ( E1 ) detect labels in the image, using Rekognition (“detectLabels” method).
+>
+  >*Use the S3 SDK’s headObject method7 to retrieve the S3 metadata created at the object’s upload time. Retrieve the x-amz-meta->customLabels metadata field, if applicable, and create a JSON array ( A1 ) with the labels.
+>
+  >*Store a JSON object in an ElasticSearch index (“photos”) that references the S3 object from the PUT event ( E1 ) and append string >labels to the labels array ( A1 ), one for each label detected by Rekognition.
+>
+>  Use the following schema for the JSON object:
+ > {
+    >    “objectKey”: “my-photo.jpg”,
+    >    “bucket”: “my-photo-bucket”,
+   >     “createdTimestamp”: “2018-11-05T12:40:02”,
+    >    “labels”: [
+     >               “person”,
+      >              “dog”,
+      >              “ball”,
+      >              “park”
+      >          ]
+  >}
 3. Search:
 
 a. Create a Lambda function ( LF2 ) called “search-photos” .
