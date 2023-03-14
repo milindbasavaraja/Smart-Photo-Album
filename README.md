@@ -18,15 +18,15 @@ This project has eight components:
 >
   >* This prevents unauthorized internet access to your service.
 2. Upload & index photos
-
+>
  >a. Create a S3 bucket ( B2 ) to store the photos.
 >
  >b. Create a Lambda function ( LF1 ) called “index-photos” .
 >
-    >*Launch the Lambda function inside the same VPC as ElasticSearch. This ensures that the function can reach the ElasticSearch instance.
+    >* Launch the Lambda function inside the same VPC as ElasticSearch. This ensures that the function can reach the ElasticSearch instance.
 >
   >* Make sure the Lambda has the same Security Group ( SG1 ) as ElasticSearch.
-
+>
 >c. Set up a PUT event trigger on the photos S3 bucket ( B2 ), such that whenever a photo gets uploaded to the bucket, it triggers the >Lambda function ( LF1 ) to index it.
 >
     >*To test this functionality, upload a file to the photos S3 bucket ( B2 ) and check the logs of the indexing Lambda function ( LF1 ) >to see if it got invoked. If it did, your setup is complete.
@@ -53,21 +53,21 @@ This project has eight components:
   >}
 3. Search:
 
-a. Create a Lambda function ( LF2 ) called “search-photos” .
+>a. Create a Lambda function ( LF2 ) called “search-photos” .
 
-    i. Launch the Lambda function inside the same VPC as ElasticSearch. This ensures that the function can reach the ElasticSearch instance.
+    >* Launch the Lambda function inside the same VPC as ElasticSearch. This ensures that the function can reach the ElasticSearch instance.
+>
+ >* Make sure the Lambda has the same Security Group ( SG1 ) as ElasticSearch.
 
-    ii. Make sure the Lambda has the same Security Group ( SG1 ) as ElasticSearch.
+>b. Create an Amazon Lex bot to handle search queries.
 
-b. Create an Amazon Lex bot to handle search queries.
+    >* Create one intent named “SearchIntent”.
+>
+    >* Add training utterances to the intent, such that the bot can pick up both keyword searches (“trees”, “birds”), as well as sentence >searches (“show me trees”, “show me photos with trees and birds in them”).
+>
+    >* You should be able to handle at least one or two keywords per query.
 
-    i. Create one intent named “SearchIntent”.
-
-    ii. Add training utterances to the intent, such that the bot can pick up both keyword searches (“trees”, “birds”), as well as sentence searches (“show me trees”, “show me photos with trees and birds in them”).
-
-    ● You should be able to handle at least one or two keywords per query.
-
-c. Implement the Search Lambda function ( LF2 ):
+>c. Implement the Search Lambda function ( LF2 ):
 
     i. Given a search query “q”, disambiguate the query using the Amazon Lex bot.
 
