@@ -11,12 +11,12 @@ This project has eight components:
 1. Launch an ElasticSearch instance:
 
 >a. Using AWS ElasticSearch service, create a new domain called “photos” .
-
+>
 >b. Make note of the Security Group ( SG1 ) you attach to the domain.
-
+>
 >c. Deploy the service inside a VPC.
-
-  >i. This prevents unauthorized internet access to your service.
+>
+  >* This prevents unauthorized internet access to your service.
 2. Upload & index photos
 
  a. Create a S3 bucket ( B2 ) to store the photos.
