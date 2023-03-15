@@ -38,7 +38,7 @@ def retrieve_data_from_elastic(labels):
     log.info("Reading data from Elastic")
     region = "us-east-1"
     service = "es"
-    domain_url = 'https://search-search-photos-62djxdxszlotn545pzoae4oowq.us-east-1.es.amazonaws.com/'
+    domain_url = ''
     index = "photos"
     url = domain_url + index + '/_search'
     elastic_response_list = []
@@ -53,7 +53,7 @@ def retrieve_data_from_elastic(labels):
             }
         }
         headers = { "Content-Type": "application/json" }
-        elastic_response = requests.get(url, auth=("Milind","Milind@123"), headers=headers, data=json.dumps(query))
+        elastic_response = requests.get(url, auth=(), headers=headers, data=json.dumps(query))
         log.info(f"The elastic response is {elastic_response.json()}")
         elastic_response_list.append(elastic_response.json())
     s3_photos_keys = []
@@ -71,7 +71,7 @@ def retrieve_data_from_elastic(labels):
     
     #Appending s3 urls to photofile name
     s3_photos_urls = []
-    s3_bucket_url = "https://my-photos-bucket-smart-photos.s3.amazonaws.com/"
+    s3_bucket_url = ""
     for photo in s3_photos_keys:
         url = s3_bucket_url+photo
         log.info(f"The s3 url for {photo} is {url}")

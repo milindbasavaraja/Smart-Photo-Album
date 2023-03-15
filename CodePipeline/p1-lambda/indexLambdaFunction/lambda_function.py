@@ -81,7 +81,7 @@ def lambda_handler(event, context):
         }
     
     
-    open_search_url = "https://search-search-photos-62djxdxszlotn545pzoae4oowq.us-east-1.es.amazonaws.com"
+    open_search_url = ""
     path = "/photos/_doc"
     open_search_url = open_search_url+path
     open_search_response = requests.post(open_search_url,auth=('Milind','Milind@123'),json = elastic_data) 
